@@ -2,6 +2,7 @@ package com.example.login
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.login.databinding.ActivityChatBinding
@@ -45,7 +46,7 @@ class ChatActivity : AppCompatActivity() {
 
         //넘어온 데이터 변수에 담기
         receiverName = intent.getStringExtra("name").toString()
-        receiverUid = intent.getStringExtra("uId").toString()
+        receiverUid = intent.getStringExtra("uid").toString()
 
         mAuth = FirebaseAuth.getInstance()
         mDbRef = FirebaseDatabase.getInstance().reference
@@ -56,14 +57,20 @@ class ChatActivity : AppCompatActivity() {
         //보낸이방
         senderRoom = receiverUid + senderUid
 
+
         //받는이방
         receiverRoom = senderUid + receiverUid
+
 
         //액션바에 상대방 이름 보여주기
         supportActionBar?.title = receiverName
 
         //메시지 전송 버튼 클릭 이벤트
         binding.sendBtn.setOnClickListener {
+            Log.d("Login", senderRoom)
+            Log.d("Login", receiverRoom)
+            Log.d("Login", senderUid.toString())
+            Log.d("Login", receiverUid)
 
             val message = binding.messageEdit.text.toString()
             val messageObject = Message(message, senderUid)
@@ -81,12 +88,11 @@ class ChatActivity : AppCompatActivity() {
         //메시지 가져오기
         mDbRef.child("chats").child(senderRoom).child("messages")
             .addValueEventListener(object : ValueEventListener {
-                @SuppressLint("NotifyDataSetChanged")
                 override fun onDataChange(snapshot: DataSnapshot) {
                     messageList.clear()
 
-                    for(postSnapshap in snapshot.children){
-                        val message = postSnapshap.getValue(Message::class.java)
+                    for(postSnapshot in snapshot.children){
+                        val message = postSnapshot.getValue(Message::class.java)
                         messageList.add(message!!)
                     }
                     //적용

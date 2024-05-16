@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "657059181279",
-    "project_id": "login-87254",
-    "storage_bucket": "login-87254.appspot.com"
+    "project_number": "405864051970",
+    "project_id": "guiddy-6571b",
+    "storage_bucket": "guiddy-6571b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:657059181279:android:81a56a691c8653503fef6a",
+        "mobilesdk_app_id": "1:405864051970:android:46fb1ca0b50ac9b1847e1b",
         "android_client_info": {
           "package_name": "com.example.login"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDODathstBZcEzDChTSa84HaYs5i55G5Gc"
+          "current_key": "AIzaSyAgzRZgQThuMdvUJY2hQdSZVb4wYvcBXoM"
         }
       ],
       "services": {

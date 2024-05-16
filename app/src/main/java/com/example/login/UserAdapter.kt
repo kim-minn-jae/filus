@@ -2,6 +2,7 @@ package com.example.login
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +11,7 @@ import androidx.appcompat.view.menu.MenuView.ItemView
 import androidx.recyclerview.widget.RecyclerView
 
 class UserAdapter(private val context: Context,private val userList: ArrayList<User>):
-RecyclerView.Adapter<UserAdapter.UserViewHolder>(){
+    RecyclerView.Adapter<UserAdapter.UserViewHolder>(){
 
     /**
      * 화면 설정
@@ -27,6 +28,7 @@ RecyclerView.Adapter<UserAdapter.UserViewHolder>(){
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         //데이터 담기
         val currentUser = userList[position]
+        Log.d("CURRENTUSER", currentUser.toString())
 
         //화면에 데이터 보여주기
         holder.nameText.text = currentUser.name
@@ -38,7 +40,10 @@ RecyclerView.Adapter<UserAdapter.UserViewHolder>(){
 
             //넘길 데이터
             intent.putExtra("name", currentUser.name)
-            intent.putExtra("uId", currentUser.uId)
+            intent.putExtra("uid", currentUser.uid)
+            Log.d("ADAPTER", currentUser.uid)
+            Log.d("ADAPTER", currentUser.name)
+            Log.d("ADAPTER", currentUser.toString())
 
             context.startActivity(intent)
         }

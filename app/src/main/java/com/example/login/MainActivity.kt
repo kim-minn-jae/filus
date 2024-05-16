@@ -2,6 +2,7 @@ package com.example.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.enableEdgeToEdge
@@ -49,8 +50,10 @@ class MainActivity : AppCompatActivity() {
                 for(postSnapshot in snapshot.children) {
                     //유저 정보
                     val currentUser = postSnapshot.getValue(User::class.java)
+                    Log.d("MAINACT CURRENT", currentUser.toString())
 
-                    if(mAuth.currentUser?.uid != currentUser?.uId){
+                    Log.d("MAINACT", currentUser?.uid.toString())
+                    if(mAuth.currentUser?.uid != currentUser?.uid){
                         userList.add(currentUser!!)
                     }
                 }

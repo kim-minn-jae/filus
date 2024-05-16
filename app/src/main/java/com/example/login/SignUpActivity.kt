@@ -1,6 +1,7 @@
 package com.example.login
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.provider.ContactsContract.CommonDataKinds.Email
 import android.util.Log
@@ -15,6 +16,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.database
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 
 class SignUpActivity : AppCompatActivity() {
 
@@ -63,7 +66,6 @@ class SignUpActivity : AppCompatActivity() {
             }
 
     }
-
     private fun addUserToDatabase(name:String, email: String, uId:String){
         mDbRef.child("User").child(uId).setValue(User(name, email, uId))
     }
